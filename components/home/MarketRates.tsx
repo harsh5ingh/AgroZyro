@@ -1,35 +1,42 @@
-const marketRates = [
+import {
+  ArrowRight,
+  MapPin,
+  TrendingDown,
+  TrendingUp,
+} from "lucide-react";
+
+const rates = [
   {
     name: "Mustard",
-    rate: "₹5,850",
-    unit: "Quintal",
-    change: "+2.4%",
-    trend: "up",
+    price: "₹5,850",
+    change: "2.4%",
+    positive: true,
     location: "Madhya Pradesh",
+    image: "/images/market/mustard.jpg",
   },
   {
     name: "Soybean",
-    rate: "₹4,720",
-    unit: "Quintal",
-    change: "+1.8%",
-    trend: "up",
-    location: "Madhya Pradesh",
+    price: "₹4,320",
+    change: "1.2%",
+    positive: false,
+    location: "Maharashtra",
+    image: "/images/market/soybean.jpg",
   },
   {
     name: "Wheat",
-    rate: "₹2,450",
-    unit: "Quintal",
-    change: "+0.9%",
-    trend: "up",
-    location: "Madhya Pradesh",
+    price: "₹2,150",
+    change: "0.8%",
+    positive: true,
+    location: "Uttar Pradesh",
+    image: "/images/market/wheat.jpg",
   },
   {
     name: "Rice",
-    rate: "₹3,200",
-    unit: "Quintal",
-    change: "-0.6%",
-    trend: "down",
-    location: "Madhya Pradesh",
+    price: "₹3,980",
+    change: "1.5%",
+    positive: true,
+    location: "Chhattisgarh",
+    image: "/images/market/rice.jpg",
   },
 ];
 
@@ -37,107 +44,111 @@ export default function MarketRates() {
   return (
     <section
       id="market-rates"
-      className="border-t border-agro-border bg-white py-20 sm:py-24 lg:py-28"
+      className="border-t border-agro-border bg-white py-8 sm:py-9"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-
         {/* Header */}
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-          <div className="max-w-2xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-agro-green">
-              Today&apos;s Market
-            </p>
-
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-zinc-900 sm:text-4xl">
-              Today&apos;s Market Rates
+        <div className="flex items-end justify-between">
+          <div>
+            <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 sm:text-3xl">
+              Today's Market Rates
             </h2>
 
-            <p className="mt-4 text-base leading-7 text-agro-muted">
-              Track commodity prices and market movements across agricultural
-              markets.
+            <p className="mt-1 text-sm text-agro-muted sm:text-base">
+              Stay updated with the latest market rates across key agricultural
+              products.
             </p>
           </div>
 
           <button
             type="button"
-            className="w-fit text-sm font-semibold text-agro-green transition hover:text-agro-green-dark"
+            className="hidden shrink-0 text-sm font-semibold text-agro-green transition-colors hover:text-agro-green-dark sm:block"
           >
-            View All Rates →
+            View All Rates
+            <span className="ml-1.5">→</span>
           </button>
         </div>
 
-        {/* Rate Cards */}
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {marketRates.map((item) => (
-            <article
-              key={item.name}
-              className="group rounded-2xl border border-agro-border bg-background p-6 transition-all duration-200 hover:-translate-y-1 hover:border-green-200 hover:shadow-lg"
+        {/* Cards */}
+        <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {rates.map((rate, index) => (
+            <div
+              key={rate.name}
+              className={`group flex h-[140px] items-center gap-4 rounded-xl bg-white px-3.5 py-3 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md ${
+                index === 0
+                  ? "border-2 border-[#78c69a] hover:border-agro-green"
+                  : "border border-agro-border hover:border-agro-green/40"
+              }`}
             >
-              {/* Commodity */}
-              <div className="flex items-start justify-between">
-                <div>
-                  <p className="text-xs font-medium uppercase tracking-wider text-zinc-400">
-                    Commodity
-                  </p>
-
-                  <h3 className="mt-2 text-lg font-semibold text-zinc-900">
-                    {item.name}
-                  </h3>
-                </div>
-
-                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-agro-green-light text-sm text-agro-green">
-                  ↗
-                </div>
+              {/* Product image */}
+              <div className="flex h-[112px] w-[112px] shrink-0 items-center justify-center overflow-hidden rounded-lg bg-[#f4f8f4]">
+                <img
+                  src={rate.image}
+                  alt={rate.name}
+                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
               </div>
 
-              {/* Price */}
-              <div className="mt-8">
-                <span className="text-3xl font-semibold tracking-tight text-zinc-900">
-                  {item.rate}
-                </span>
+              {/* Content */}
+              <div className="flex min-w-0 flex-1 flex-col self-stretch py-1">
+                <h3 className="truncate text-[15px] font-semibold text-zinc-900">
+                  {rate.name}
+                </h3>
 
-                <span className="ml-1.5 text-sm text-zinc-500">
-                  / {item.unit}
-                </span>
-              </div>
+                <div className="mt-1 flex items-baseline whitespace-nowrap">
+                  <span className="text-[18px] font-semibold text-zinc-900">
+                    {rate.price}
+                  </span>
 
-              {/* Change */}
-              <div className="mt-4 flex items-center gap-2">
-                <span
-                  className={`rounded-md px-2 py-1 text-xs font-semibold ${
-                    item.trend === "up"
-                      ? "bg-green-50 text-green-700"
-                      : "bg-red-50 text-red-600"
+                  <span className="ml-1 text-[12px] text-zinc-500">
+                    / Quintal
+                  </span>
+                </div>
+
+                <div
+                  className={`mt-1 flex items-center gap-1 text-[13px] font-semibold ${
+                    rate.positive ? "text-green-700" : "text-red-600"
                   }`}
                 >
-                  {item.change}
-                </span>
+                  {rate.positive ? (
+                    <TrendingUp size={13} strokeWidth={2.5} />
+                  ) : (
+                    <TrendingDown size={13} strokeWidth={2.5} />
+                  )}
 
-                <span className="text-xs text-zinc-400">
-                  vs. last week
-                </span>
-              </div>
+                  {rate.change}
+                </div>
 
-              {/* Location */}
-              <div className="mt-6 border-t border-agro-border pt-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs text-zinc-500">
-                    {item.location}
-                  </span>
+                {/* Bottom row */}
+                <div className="mt-auto flex min-w-0 items-center gap-2">
+                  <div className="flex min-w-0 flex-1 items-center gap-1.5 text-[11px] text-zinc-500">
+                    <MapPin
+                      size={12}
+                      strokeWidth={2}
+                      className="shrink-0"
+                    />
 
-                  <span className="text-xs font-medium text-agro-green opacity-0 transition-opacity group-hover:opacity-100">
-                    Details →
-                  </span>
+                    <span className="truncate">{rate.location}</span>
+                  </div>
+
+                  {/* Arrow */}
+                  <button
+                    type="button"
+                    aria-label={`View ${rate.name} market details`}
+                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-agro-border bg-white text-zinc-700 transition-all duration-200 group-hover:border-agro-green group-hover:text-agro-green hover:bg-agro-green-light"
+                  >
+                    <ArrowRight size={15} strokeWidth={1.8} />
+                  </button>
                 </div>
               </div>
-            </article>
+            </div>
           ))}
         </div>
 
-        {/* Disclaimer */}
-        <p className="mt-6 text-xs text-zinc-400">
-          Market rates shown here are demonstration data and will be replaced
-          with verified market data in the production system.
+        {/* Demo notice */}
+        <p className="mt-3 text-[11px] text-agro-muted">
+          Demonstration data — verified market data will be connected in the
+          production system.
         </p>
       </div>
     </section>

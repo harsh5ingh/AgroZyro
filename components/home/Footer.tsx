@@ -1,130 +1,169 @@
-import Link from "next/link";
+import Image from "next/image";
 
 const marketplaceLinks = [
-  { label: "Marketplace", href: "#marketplace" },
-  { label: "Market Rates", href: "#market-rates" },
-  { label: "Categories", href: "#categories" },
-  { label: "How It Works", href: "#how-it-works" },
+  "All Products",
+  "Grains",
+  "Pulses",
+  "Oilseeds",
+  "Spices",
+  "Poultry",
+  "Fruits & Vegetables",
 ];
 
 const companyLinks = [
-  { label: "About AgroZyro", href: "#about" },
-  { label: "Contact", href: "#contact" },
-  { label: "Careers", href: "#careers" },
+  "About Us",
+  "Careers",
+  "Blog",
+  "Press",
+  "Contact",
 ];
 
 const supportLinks = [
-  { label: "Help Center", href: "#help" },
-  { label: "Terms of Service", href: "#terms" },
-  { label: "Privacy Policy", href: "#privacy" },
+  "Help Center",
+  "Privacy Policy",
+  "Terms of Service",
+  "FAQs",
 ];
 
 export default function Footer() {
   return (
     <footer className="border-t border-agro-border bg-white">
-      <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+      <div className="mx-auto max-w-[1360px] px-8 lg:px-10">
 
-        {/* Main Footer */}
-        <div className="grid gap-12 lg:grid-cols-[1.5fr_1fr_1fr_1.3fr]">
+        {/* TOP FOOTER */}
+        <div className="grid grid-cols-[1.25fr_0.72fr_0.72fr_0.72fr_1.45fr] gap-10 py-7">
 
-          {/* Brand */}
+          {/* BRAND */}
           <div>
-            <Link href="/" className="inline-flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-agro-green text-lg font-bold text-white">
-                A
-              </div>
+            <Image
+              src="/images/logo/agrozyro-logo.svg"
+              alt="AgroZyro"
+              width={220}
+              height={70}
+              className="h-auto w-[205px]"
+            />
 
-              <div>
-                <p className="text-xl font-bold tracking-tight text-agro-green-dark">
-                  AgroZyro
-                </p>
-
-                <p className="text-[8px] font-medium uppercase tracking-[0.18em] text-agro-muted">
-                  Every Harvest. One Market.
-                </p>
-              </div>
-            </Link>
-
-            <p className="mt-6 max-w-sm text-sm leading-6 text-agro-muted">
-              A modern agricultural marketplace connecting farmers, buyers,
-              sellers and agricultural businesses across India.
+            <p className="mt-2.5 max-w-[290px] text-[13px] leading-[1.55] text-agro-muted">
+              Connecting farms to opportunities.
+              <br />
+              A smarter, fairer and more transparent
+              <br />
+              agricultural marketplace for India.
             </p>
 
-            {/* Social */}
-            <div className="mt-6 flex gap-2">
-              {["in", "𝕏", "ig"].map((social) => (
-                <button
-                  key={social}
-                  type="button"
-                  aria-label={`Visit AgroZyro on ${social}`}
-                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-agro-border text-xs font-semibold text-zinc-600 transition hover:border-agro-green hover:bg-agro-green-light hover:text-agro-green"
+            {/* SOCIAL */}
+            <div className="mt-4 flex items-center gap-2.5">
+              <a
+                href="#"
+                aria-label="LinkedIn"
+                className="flex h-8 w-8 items-center justify-center rounded-md border border-agro-border text-[12px] font-bold text-agro-muted transition hover:border-agro-green hover:bg-agro-green-light hover:text-agro-green"
+              >
+                in
+              </a>
+
+              <a
+                href="#"
+                aria-label="X"
+                className="flex h-8 w-8 items-center justify-center rounded-md border border-agro-border text-[12px] font-bold text-agro-muted transition hover:border-agro-green hover:bg-agro-green-light hover:text-agro-green"
+              >
+                X
+              </a>
+
+              <a
+                href="#"
+                aria-label="Instagram"
+                className="flex h-8 w-8 items-center justify-center rounded-md border border-agro-border text-[11px] font-bold text-agro-muted transition hover:border-agro-green hover:bg-agro-green-light hover:text-agro-green"
+              >
+                ig
+              </a>
+
+              <a
+                href="#"
+                aria-label="YouTube"
+                className="flex h-8 w-8 items-center justify-center rounded-md border border-agro-border text-[11px] font-bold text-agro-muted transition hover:border-agro-green hover:bg-agro-green-light hover:text-agro-green"
+              >
+                ▶
+              </a>
+            </div>
+          </div>
+
+          {/* MARKETPLACE */}
+          <div>
+            <h3 className="text-[14px] font-semibold text-zinc-900">
+              Marketplace
+            </h3>
+
+            <div className="mt-3 space-y-[7px]">
+              {marketplaceLinks.map((item) => (
+                <a
+                  key={item}
+                  href="#"
+                  className="block text-[13px] leading-5 text-agro-muted transition hover:text-agro-green"
                 >
-                  {social}
-                </button>
+                  {item}
+                </a>
               ))}
             </div>
           </div>
 
-          {/* Marketplace */}
+          {/* COMPANY */}
           <div>
-            <h3 className="text-sm font-semibold text-zinc-900">
-              Marketplace
-            </h3>
-
-            <ul className="mt-5 space-y-3">
-              {marketplaceLinks.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-agro-muted transition hover:text-agro-green-dark"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h3 className="text-sm font-semibold text-zinc-900">
+            <h3 className="text-[14px] font-semibold text-zinc-900">
               Company
             </h3>
 
-            <ul className="mt-5 space-y-3">
-              {companyLinks.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-agro-muted transition hover:text-agro-green-dark"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
+            <div className="mt-3 space-y-[7px]">
+              {companyLinks.map((item) => (
+                <a
+                  key={item}
+                  href="#"
+                  className="block text-[13px] leading-5 text-agro-muted transition hover:text-agro-green"
+                >
+                  {item}
+                </a>
               ))}
-            </ul>
+            </div>
           </div>
 
-          {/* Newsletter */}
+          {/* SUPPORT */}
           <div>
-            <h3 className="text-sm font-semibold text-zinc-900">
-              Stay Updated
+            <h3 className="text-[14px] font-semibold text-zinc-900">
+              Support
             </h3>
 
-            <p className="mt-5 text-sm leading-6 text-agro-muted">
-              Get updates about AgroZyro, market insights and new features.
+            <div className="mt-3 space-y-[7px]">
+              {supportLinks.map((item) => (
+                <a
+                  key={item}
+                  href="#"
+                  className="block text-[13px] leading-5 text-agro-muted transition hover:text-agro-green"
+                >
+                  {item}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* SUBSCRIBE */}
+          <div>
+            <h3 className="text-[14px] font-semibold text-zinc-900">
+              Subscribe to Updates
+            </h3>
+
+            <p className="mt-1.5 max-w-[320px] text-[13px] leading-5 text-agro-muted">
+              Get the latest market insights and platform updates.
             </p>
 
-            <div className="mt-5 flex rounded-xl border border-agro-border bg-background p-1">
+            <div className="mt-3 flex h-11 w-full max-w-[390px] overflow-hidden rounded-lg border border-agro-border bg-[#fafbf8]">
               <input
                 type="email"
-                placeholder="Your email address"
-                className="min-w-0 flex-1 bg-transparent px-3 text-sm text-zinc-900 outline-none placeholder:text-zinc-400"
+                placeholder="Enter your email"
+                className="min-w-0 flex-1 bg-transparent px-3.5 text-[13px] text-zinc-800 outline-none placeholder:text-zinc-400"
               />
 
               <button
                 type="button"
-                className="shrink-0 rounded-lg bg-agro-green px-4 py-2.5 text-xs font-semibold text-white transition hover:bg-agro-green-dark"
+                className="m-1 rounded-md bg-agro-green px-5 text-[12px] font-semibold text-white transition hover:bg-agro-green-dark"
               >
                 Subscribe
               </button>
@@ -132,27 +171,47 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom */}
-        <div className="mt-14 flex flex-col gap-4 border-t border-agro-border pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-agro-muted">
+        {/* BOTTOM LINE */}
+        <div className="border-t border-agro-border" />
+
+        {/* BOTTOM FOOTER */}
+        <div className="flex h-[58px] items-center justify-between text-[12px] text-agro-muted">
+
+          {/* COPYRIGHT */}
+          <p>
             © 2026 AgroZyro. All rights reserved.
           </p>
 
-          <div className="flex flex-wrap gap-5">
-            {supportLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="text-xs text-agro-muted transition hover:text-agro-green-dark"
-              >
-                {link.label}
-              </Link>
-            ))}
+          {/* CENTER LINKS */}
+          <div className="flex items-center gap-6">
+            <a
+              href="#"
+              className="transition hover:text-agro-green"
+            >
+              Help Center
+            </a>
+
+            <a
+              href="#"
+              className="transition hover:text-agro-green"
+            >
+              Terms of Service
+            </a>
+
+            <a
+              href="#"
+              className="transition hover:text-agro-green"
+            >
+              Privacy Policy
+            </a>
           </div>
 
-          <p className="text-xs text-agro-muted">
-            🇮🇳 India&apos;s Agricultural Marketplace
-          </p>
+          {/* RIGHT */}
+          <div className="flex items-center gap-2">
+            <span className="text-[14px]">🌿</span>
+            <span>India&apos;s Agricultural Marketplace</span>
+            <span className="text-[15px]">🇮🇳</span>
+          </div>
         </div>
       </div>
     </footer>

@@ -1,43 +1,35 @@
 const categories = [
   {
-    name: "Grains",
-    description: "Wheat, rice, maize & more",
-    icon: "🌾",
+    title: "Grains",
+    image: "/images/categories/grains.png",
   },
   {
-    name: "Pulses",
-    description: "Chana, dal & more",
-    icon: "🫘",
+    title: "Pulses",
+    image: "/images/categories/pulses.png",
   },
   {
-    name: "Oilseeds",
-    description: "Mustard, soybean & more",
-    icon: "🌱",
+    title: "Oilseeds",
+    image: "/images/categories/oilseeds.png",
   },
   {
-    name: "Spices",
-    description: "Essential Indian spices",
-    icon: "🌶️",
+    title: "Spices",
+    image: "/images/categories/spices.png",
   },
   {
-    name: "Fruits & Vegetables",
-    description: "Fresh produce",
-    icon: "🥕",
+    title: "Fruits & Vegetables",
+    image: "/images/categories/fruits-vegetables.png",
   },
   {
-    name: "Poultry",
-    description: "Chicken, eggs & more",
-    icon: "🐔",
+    title: "Poultry",
+    image: "/images/categories/poultry.png",
   },
   {
-    name: "Animal Feed",
-    description: "Feed & nutrition",
-    icon: "🌿",
+    title: "Animal Feed",
+    image: "/images/categories/animal-feed.png",
   },
   {
-    name: "Others",
-    description: "Explore more products",
-    icon: "＋",
+    title: "Others",
+    image: "/images/categories/others.png",
   },
 ];
 
@@ -45,58 +37,69 @@ export default function Categories() {
   return (
     <section
       id="categories"
-      className="bg-background py-20 sm:py-24 lg:py-28"
+      className="border-t border-agro-border bg-[#fafbf8] py-8 sm:py-10"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        {/* Header */}
+        <div className="flex items-end justify-between">
+          <div>
+            <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 sm:text-3xl">
+              Explore Categories
+            </h2>
 
-        {/* Section Header */}
-        <div className="max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-agro-green">
-            Explore Marketplace
-          </p>
+            <p className="mt-1 text-sm text-agro-muted sm:text-base">
+              Choose from a wide range of agricultural products. From grains
+              to poultry, spices to more — everything at one place.
+            </p>
+          </div>
 
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-zinc-900 sm:text-4xl">
-            Agricultural products,
-            <span className="block text-agro-green-dark">
-              all in one place.
-            </span>
-          </h2>
-
-          <p className="mt-4 text-base leading-7 text-agro-muted">
-            Discover products across major agricultural categories and connect
-            with buyers and sellers through AgroZyro.
-          </p>
+          <button
+            type="button"
+            className="hidden shrink-0 text-sm font-semibold text-agro-green sm:block"
+          >
+            View All Categories
+            <span className="ml-1.5">→</span>
+          </button>
         </div>
 
-        {/* Categories Grid */}
-        <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:gap-5">
+        {/* Category cards */}
+        <div className="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-8 lg:gap-2">
           {categories.map((category) => (
             <button
-              key={category.name}
+              key={category.title}
               type="button"
-              className="group rounded-2xl border border-agro-border bg-white p-5 text-left transition-all duration-200 hover:-translate-y-1 hover:border-green-200 hover:shadow-lg sm:p-6"
+              className="group overflow-hidden rounded-xl border border-agro-border bg-white text-left shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
             >
-              {/* Icon */}
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-agro-green-light text-2xl transition-transform duration-200 group-hover:scale-105">
-                {category.icon}
+              {/* Image */}
+              <div className="flex h-[118px] items-center justify-center overflow-hidden bg-white px-3 py-2">
+                <img
+                  src={category.image}
+                  alt={category.title}
+                  className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
+                />
               </div>
 
-              {/* Content */}
-              <h3 className="mt-5 text-base font-semibold text-zinc-900">
-                {category.name}
-              </h3>
+              {/* Card content */}
+              <div className="px-3.5 pb-3.5 pt-1">
+                <h3 className="whitespace-nowrap text-[13px] font-semibold tracking-tight text-zinc-900">
+                  {category.title}
+                </h3>
 
-              <p className="mt-1.5 text-sm leading-5 text-agro-muted">
-                {category.description}
-              </p>
-
-              {/* Arrow */}
-              <div className="mt-5 text-sm font-semibold text-agro-green opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-                Explore →
+                <span className="mt-3 block text-[13px] font-semibold text-agro-green">
+                  Explore →
+                </span>
               </div>
             </button>
           ))}
         </div>
+
+        {/* Mobile */}
+        <button
+          type="button"
+          className="mt-5 text-sm font-semibold text-agro-green sm:hidden"
+        >
+          View All Categories →
+        </button>
       </div>
     </section>
   );
