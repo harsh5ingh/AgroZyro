@@ -1,40 +1,47 @@
 "use client";
 
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 interface MotionButtonProps {
   label: string;
-  href?: string;
   variant?: "primary" | "secondary";
   classes?: string;
+  href?: string;
+  onClick?: () => void;
 }
 
-function cn(...inputs: any[]) {
+function cn(...inputs: Parameters<typeof clsx>) {
   return twMerge(clsx(inputs));
 }
 
 export default function MotionButton({
   label,
-  href = "#",
   variant = "primary",
   classes,
+  href,
+  onClick,
 }: MotionButtonProps) {
-  return (
-    <Link
-      href={href}
-      className={cn(
-        "group relative inline-flex h-[50px] w-full items-center overflow-hidden rounded-full bg-white p-1 outline-none sm:w-[195px]",
-        classes
-      )}
-    >
-      {/* Expanding circle */}
+  const buttonContent = (
+    <>
+      {/* Expanding green circle */}
       <span
         aria-hidden="true"
         className={cn(
-          "absolute left-1 top-1 h-12 w-12 rounded-full transition-all duration-500 ease-out group-hover:w-[calc(100%-8px)]",
+          `
+            absolute
+            left-1
+            top-1
+            block
+            h-12
+            w-12
+            rounded-full
+            transition-all
+            duration-500
+            group-hover:w-[calc(100%-8px)]
+          `,
           variant === "primary"
             ? "bg-agro-green"
             : "bg-agro-green-dark"
@@ -84,6 +91,55 @@ export default function MotionButton({
       >
         {label}
       </span>
-    </Link>
+    </>
+  );
+
+  const buttonClasses = cn(
+    `
+      group
+      relative
+      inline-flex
+      h-[50px]
+      w-full
+      cursor-pointer
+      items-center
+      justify-center
+      overflow-hidden
+      rounded-full
+      border-none
+      bg-white
+      p-1
+      outline-none
+      sm:w-[195px]
+    `,
+    classes
+  );
+
+  /* ---------------------------------------------------------
+     LINK VERSION
+  --------------------------------------------------------- */
+  if (href) {
+    return (
+      <Link
+        href={href}
+        className={buttonClasses}
+        onClick={onClick}
+      >
+        {buttonContent}
+      </Link>
+    );
+  }
+
+  /* ---------------------------------------------------------
+     BUTTON VERSION
+  --------------------------------------------------------- */
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={buttonClasses}
+    >
+      {buttonContent}
+    </button>
   );
 }

@@ -101,3 +101,26 @@ body {
     animation-play-state: paused;
   }
 }
+
+/* Signup modal scrollbar */
+.signup-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(31, 107, 58, 0.45) transparent;
+}
+
+.signup-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.signup-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.signup-scroll::-webkit-scrollbar-thumb {
+  background: rgba(31, 107, 58, 0.45);
+  border-radius: 999px;
+}
+
+.signup-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(31, 107, 58, 0.7);
+}
