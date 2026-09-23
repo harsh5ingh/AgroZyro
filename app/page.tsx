@@ -4,7 +4,8 @@ import Categories from "@/components/home/Categories";
 import MarketRates from "@/components/home/MarketRates";
 import HowItWorks from "@/components/home/HowItWorks";
 import Ecosystem from "@/components/home/Ecosystem";
-import AppPromo from "@/components/home/AppPromo";
+//import AppPromo from "@/components/home/AppPromo";
+import Testimonials from "@/components/home/Testimonials";
 import FinalCTA from "@/components/home/FinalCTA";
 import Footer from "@/components/home/Footer";
 
@@ -23,7 +24,9 @@ export default function Home() {
 
       <Ecosystem />
 
-      <AppPromo/>
+      {/* <AppPromo /> */}
+
+      <Testimonials />
 
       <FinalCTA />
 

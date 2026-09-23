@@ -42,3 +42,62 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* =========================================================
+   AGROZYRO TESTIMONIALS
+   ========================================================= */
+
+.testimonial-column {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.testimonial-column-track {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  will-change: transform;
+  animation: agrozyro-testimonial-scroll
+    var(--testimonial-duration, 18s)
+    linear
+    infinite;
+}
+
+@keyframes agrozyro-testimonial-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, -50%, 0);
+  }
+}
+
+/* Mobile */
+@media (max-width: 639px) {
+  .testimonial-column-track {
+    animation-duration: var(--testimonial-duration, 18s);
+  }
+}
+
+/* Tablet */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .testimonial-column-track {
+    animation-duration: var(--testimonial-duration, 20s);
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .testimonial-column-track {
+    animation-duration: var(--testimonial-duration, 18s);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-column-track {
+    animation-play-state: paused;
+  }
+}

@@ -51,22 +51,34 @@ export default function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      className="border-t border-agro-border bg-white py-8 sm:py-9"
+      className="border-t border-agro-border bg-white py-8 sm:py-9 lg:py-10"
     >
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div>
           <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 sm:text-3xl">
             How AgroZyro Works
           </h2>
 
-          <p className="mt-1 text-sm text-agro-muted sm:text-base">
+          <p className="mt-1.5 text-sm leading-5 text-agro-muted sm:text-base sm:leading-6">
             A simple and transparent process for a better trading experience.
           </p>
         </div>
 
-        {/* Desktop flow */}
-        <div className="mt-7 hidden lg:grid lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr] lg:items-start lg:gap-x-4">
+        {/* =========================================================
+            DESKTOP — 6 STEP HORIZONTAL FLOW
+            ========================================================= */}
+        <div
+          className="
+            mt-7
+            hidden
+            lg:grid
+            lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr]
+            lg:items-start
+            lg:gap-x-3
+            xl:gap-x-4
+          "
+        >
           {steps.map((step, index) => {
             const Icon = step.icon;
 
@@ -79,7 +91,7 @@ export default function HowItWorks() {
                     <Icon size={26} strokeWidth={2} />
                   </div>
 
-                  {/* Number + title */}
+                  {/* Number + Title */}
                   <div className="mt-3 flex items-center justify-center gap-2">
                     <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-zinc-100 text-[10px] font-semibold text-zinc-600">
                       {step.number}
@@ -98,7 +110,7 @@ export default function HowItWorks() {
 
                 {/* Arrow */}
                 {index < steps.length - 1 && (
-                  <div className="flex h-14 items-center justify-center">
+                  <div className="flex h-14 items-center justify-center px-1">
                     <ArrowRight
                       size={18}
                       strokeWidth={1.8}
@@ -111,17 +123,21 @@ export default function HowItWorks() {
           })}
         </div>
 
-        {/* Tablet / Mobile */}
-        <div className="mt-7 grid grid-cols-2 gap-x-5 gap-y-8 sm:grid-cols-3 lg:hidden">
+        {/* =========================================================
+            TABLET
+            ========================================================= */}
+        <div className="mt-7 hidden sm:grid sm:grid-cols-3 sm:gap-x-6 sm:gap-y-9 lg:hidden">
           {steps.map((step) => {
             const Icon = step.icon;
 
             return (
-              <div key={step.number} className="text-center">
+              <div key={step.number} className="min-w-0 text-center">
+                {/* Icon */}
                 <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-agro-green-light text-agro-green">
                   <Icon size={26} strokeWidth={2} />
                 </div>
 
+                {/* Number + Title */}
                 <div className="mt-3 flex items-center justify-center gap-2">
                   <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-zinc-100 text-[10px] font-semibold text-zinc-600">
                     {step.number}
@@ -132,7 +148,42 @@ export default function HowItWorks() {
                   </h3>
                 </div>
 
+                {/* Description */}
                 <p className="mx-auto mt-2 max-w-[155px] text-xs leading-5 text-agro-muted">
+                  {step.description}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* =========================================================
+            MOBILE
+            ========================================================= */}
+        <div className="mt-7 grid grid-cols-2 gap-x-3 gap-y-8 sm:hidden">
+          {steps.map((step) => {
+            const Icon = step.icon;
+
+            return (
+              <div key={step.number} className="min-w-0 text-center">
+                {/* Icon */}
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-agro-green-light text-agro-green">
+                  <Icon size={23} strokeWidth={2} />
+                </div>
+
+                {/* Number + Title */}
+                <div className="mt-3 flex items-center justify-center gap-1.5">
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-zinc-100 text-[9px] font-semibold text-zinc-600">
+                    {step.number}
+                  </span>
+
+                  <h3 className="text-[13px] font-semibold leading-5 text-zinc-900">
+                    {step.title}
+                  </h3>
+                </div>
+
+                {/* Description */}
+                <p className="mx-auto mt-1.5 max-w-[145px] text-[11px] leading-4.5 text-agro-muted">
                   {step.description}
                 </p>
               </div>
